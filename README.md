@@ -12,7 +12,7 @@
 
 ### Workflow
 
-<img width="287" height="587" alt="workflow_BCMhack25" src="https://github.com/user-attachments/assets/be3d0885-10b9-4c4d-8a83-768b2f6c4655" />
+<img width="287" height="687" alt="workflow_BCMhack25-2" src="https://github.com/user-attachments/assets/ae6cc15c-9909-4f1d-9c2a-74bd1dd8d436" />
 
 ## Results
 
