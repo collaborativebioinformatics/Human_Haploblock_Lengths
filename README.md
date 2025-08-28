@@ -123,6 +123,7 @@ Assemblies:
 2. Nurk S, et al. *The complete human genome assembly.* Nat. 2023. [link](https://pmc.ncbi.nlm.nih.gov/articles/PMC10234299)  
 3. Halldorsson BV, et al. *Population-scale recombination maps.* Nat Genet. 2019. [link](https://pmc.ncbi.nlm.nih.gov/articles/PMC12350169)  
 4. NIST Genome in a Bottle Consortium. [link](https://www.nist.gov/programs-projects/genome-bottle)  
-5. Human Pangenome Reference Consortium. [link](https://pubmed.ncbi.nlm.nih.gov/40702183/)  
+5. Human Pangenome Reference Consortium. [link](https://pubmed.ncbi.nlm.nih.gov/40702183/)
+6. A haplotype-resolved view of human gene regulation [link](https://pmc.ncbi.nlm.nih.gov/articles/PMC12157683/)
 
 ---
