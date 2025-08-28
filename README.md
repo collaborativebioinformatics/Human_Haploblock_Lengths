@@ -41,8 +41,8 @@ The concept of **haploblocks** (blocks of DNA inherited without recombination) i
 
 ### Trio Data  
 - **HG002 (child)** — Genome in a Bottle (GIAB)  
-- **HG004 (mother):** [Assembly link](https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_018852615.3/)  
-- **HG003 (father):** [Assembly link](https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_018852605.3/)  
+- **HG004 (mother):** [Haplotype assembly for mother](https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_018852615.3/)  
+- **HG003 (father):** [Haplotype assembly for father](https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_018852605.3/)  
 
 Assemblies:  
 - Mother: [HG004 latest release](https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/AshkenazimTrio/HG004_NA24143_mother/latest/)  
