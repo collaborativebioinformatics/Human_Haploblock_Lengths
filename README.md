@@ -95,7 +95,7 @@ Assemblies:
 - **Haploblock length distribution** (most 50–200 kb, some >1 Mb due to SVs)  
 - **Overlap with known hotspots** (deCODE, PRDM9 motifs)  
 - **Preliminary clustering** of haploblocks around hotspots  
-
+<img width="450" alt="workflow_diagram" src="[https://github.com/collaborativebioinformatics/Human_Haploblock_Lengths/blob/main/example_graph.png]"/>
 ---
 
 ## 💡 Use Cases  
