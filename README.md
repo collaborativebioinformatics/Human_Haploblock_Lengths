@@ -127,3 +127,5 @@ Assemblies:
 6. A haplotype-resolved view of human gene regulation [link](https://pmc.ncbi.nlm.nih.gov/articles/PMC12157683/)
 
 ---
+
+### Special thank you to the organizers of the BCM Hackathon 2025!
