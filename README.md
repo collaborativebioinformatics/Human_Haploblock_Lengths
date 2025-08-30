@@ -79,9 +79,6 @@ The analysis focused on chr6:70–80 Mb in the Ashkenazim Trio (HG002 child, HG0
 
 ### Figures  
 
-**Figure Team 5-1.** Flowchart of the workflow  
-![Workflow](https://github.com/collaborativebioinformatics/Human_Haploblock_Lengths/blob/main/Flowchart.JPG)  
-
 **Figure Team 5-2.** Haploblot of HG002 haplotypes across chr6:70–80 Mb (green = paternal, purple = maternal)  
 ![Haploblot](https://github.com/collaborativebioinformatics/Human_Haploblock_Lengths/blob/main/Figure%20Team%205-2.png)  
 
