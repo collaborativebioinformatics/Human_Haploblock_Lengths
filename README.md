@@ -4,8 +4,16 @@
 ---
 
 ## 👩‍🔬 Contributors  
-  
-
+Team 5 – Human Haploblock Lengths Project (Hackathon group)  
+Ben Busby (👑 Group Lead)
+Jędrzej Kubica
+Rahaf M. Ahmad
+ Kirtan Dave 
+Soham Sengupta
+Suhasini Lulla
+Talal AL Yazeedi
+Aung Myat Phyo
+Lingfeng Meng
 ---
 
 ## 🎯 Aim  
@@ -25,107 +33,88 @@ The concept of **haploblocks** (blocks of DNA inherited without recombination) i
 
 **Why this matters:**  
 - **Haploblock = minimal unit of inheritance**  
-- Trio-based assemblies allow direct identification of **recombination breakpoints**.  
-- **Pangenome graphs** (HPRC, T2T-CHM13) capture structural variation missed by linear references.  
-- Together, these resources allow us to build **fine-scale haploblock maps** and compare them with **population recombination maps** (e.g., deCODE).  
+- Trio-based assemblies allow direct identification of **recombination breakpoints**  
+- **Pangenome graphs** (HPRC, T2T-CHM13) capture structural variation missed by linear references  
+- Together, these resources allow us to build **fine-scale haploblock maps** and compare them with **population recombination maps** (e.g., deCODE)  
 
 ---
 
 ## 🛠️ Methods  
 
-### Concept  
-- Use diverse genomes (T2T, HPRC) + ~30 trios  
-- Detect recombination hotspots from trios  
-- Estimate haploblock lengths from pangenome variation  
-- Compare and validate across methods  
-
-### Trio Data  
-- **HG002 (child)** — Genome in a Bottle (GIAB)  
-- **HG004 (mother):** [Haplotype assembly for mother](https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_018852615.3/)  
-- **HG003 (father):** [Haplotype assembly for father](https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_018852605.3/)  
-
-Assemblies:  
-- Mother: [HG004 latest release](https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/AshkenazimTrio/HG004_NA24143_mother/latest/)  
-- Father: [HG003 latest release](https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/AshkenazimTrio/HG003_NA24149_father/latest/)  
-
-### External Datasets  
-- **Population recombination maps:** [deCODE recombination rates (UCSC hg38 track)](https://genome.ucsc.edu/cgi-bin/hgTrackUi?db=hg38&g=recombRate2)  
-- **Diverse genome assemblies:**  
-  - [Human Pangenome Reference Consortium (HPRC)](https://humanpangenome.org/data/)  
-  - [HPRC intermediate assemblies GitHub](https://github.com/human-pangenomics/hprc_intermediate_assembly)  
+The analysis focused on chr6:70–80 Mb in the Ashkenazim Trio (HG002 child, HG003 father, HG004 mother).  
+- **Data sources:** GIAB v4.2.1 VCFs + chr6 reference FASTA  
+- **Tools:** bcftools, samtools, Python (pandas, numpy, matplotlib, seaborn, biopython)  
+- **Steps:**  
+  1. Filter and merge trio VCFs  
+  2. Assign parental origin of child’s heterozygous alleles  
+  3. Collapse consecutive origins into haploblocks  
+  4. Identify recombination breakpoints  
+  5. Generate consensus hap1, hap2, and IUPAC FASTAs  
+  6. Visualize haploblocks, block size distribution, and variant density  
 
 ---
 
-### 🔄 Workflow  
+## 🔄 Workflow  
 
-<img width="450" alt="workflow_diagram" src="https://github.com/collaborativebioinformatics/Human_Haploblock_Lengths/blob/main/Flowchart.JPG" />
-
-**Step-by-step:**  
-1. **Assembled Genomes:** Obtain haplotype-resolved assemblies for trios and diverse genomes.  
-2. **Graph Construction:** Build a **pangenome graph** using *minigraph-cactus* or equivalent tools.  
-3. **Hotspot Detection:**  
-   - In trios → find recombination breakpoints by comparing child vs parental haplotypes.  
-   - In diverse genomes → estimate hotspots from graph variation density.  
-4. **Comparison:** Integrate trio breakpoints with graph-based hotspots.  
-5. **Consensus Outputs:**  
-   - Recombination site list  
-   - Haploblock lengths (per chromosome)  
-   - Haploblock clusters (around hotspots)  
+![Workflow Flowchart](https://github.com/collaborativebioinformatics/Human_Haploblock_Lengths/blob/main/Flowchart.JPG)  
 
 ---
 
-## 🧪 DNAnexus  
+## 📊 Results  
 
-- **Data Management:** Store HG002/HG003/HG004 assemblies and reference genomes in project folders.  
-- **Computation:** Run *minimap2* alignments inside **Swiss-Army-Knife** app.  
-- **Parsing & Analysis:**  
-  - Use Python/Jupyter notebooks to parse alignment results  
-  - Identify breakpoints → haploblocks  
-  - Cluster haploblocks  
-- **Visualization:**  
-  - Histograms of haploblock lengths  
-  - Hotspot density maps  
-  - Comparison with deCODE recombination maps  
+**Summary statistics (chr6:70–80 Mb):**  
+- Total variants: 8,453  
+- Informative child heterozygotes: 8,453  
+- Hap1 blocks: 1,625 | Hap2 blocks: 1,942  
+- Hap1 recombinations: 1,983 | Hap2 recombinations: 2,300  
+- Hap1: 42.2% paternal, 45.7% maternal  
+- Hap2: 41.7% paternal, 46.2% maternal  
+- Smallest block: 0 bp | Largest block: 199,542 bp  
 
 ---
 
-## 📊 Results (Expected)  
+### Figures  
 
-- **Consensus haploblock map** for HG002 trio  
-- **Haploblock length distribution** (most 50–200 kb, some >1 Mb due to SVs)  
-- **Overlap with known hotspots** (deCODE, PRDM9 motifs)  
-- **Preliminary clustering** of haploblocks around hotspots  
-<img width="450" alt="workflow_diagram" src="[https://github.com/collaborativebioinformatics/Human_Haploblock_Lengths/blob/main/example_graph.png]"/>
+**Figure Team 5-1.** Flowchart of the workflow  
+![Workflow](https://github.com/collaborativebioinformatics/Human_Haploblock_Lengths/blob/main/Flowchart.JPG)  
+
+**Figure Team 5-2.** Haploblot of HG002 haplotypes across chr6:70–80 Mb (green = paternal, purple = maternal)  
+![Haploblot](https://github.com/collaborativebioinformatics/Human_Haploblock_Lengths/blob/main/Figure%20Team%205-2.png)  
+
+**Figure Team 5-3.** Distribution of haplotype block sizes. Vertical dashed lines = smallest (0 bp) and largest (199,542 bp) blocks  
+![Block size distribution](https://github.com/collaborativebioinformatics/Human_Haploblock_Lengths/blob/main/Figure%20Team%205-3.png)  
+
+**Figure Team 5-4.** Variant density histogram (100 kb bins) showing heterogeneous SNP density across the interval  
+![Variant density](https://github.com/collaborativebioinformatics/Human_Haploblock_Lengths/blob/main/Figure%20Team%205-4.png)  
+
+**Figure Team 5-5.** Divergence between hap1 and hap2, with red ticks marking heterozygous differences  
+![Hap divergence](https://github.com/collaborativebioinformatics/Human_Haploblock_Lengths/blob/main/Figure%20Team%205-5.png)  
+
 ---
 
-## 💡 Use Cases  
+### Table  
 
-- Studying recombination in **structurally complex regions** (e.g., centromeres, segmental duplications)  
-- Benchmarking new **pangenome graph algorithms**  
-- Teaching and training on **trio-based recombination detection**  
-- Enhancing **clinical variant interpretation** by incorporating haploblock structure  
+**Table Team 5-1.** Consensus sequence composition (length, GC content, N bases) for HG002 consensus, hap1, and hap2  
+[View Table (CSV)](https://github.com/collaborativebioinformatics/Human_Haploblock_Lengths/blob/main/Table%20Team%205-1.csv)  
 
 ---
 
 ## 🚀 Future Directions  
 
-- Scale up from a single trio → **30 trios**  
-- Extend to the **HPRC dataset** for population-level recombination landscapes  
-- Integrate with **functional genomic annotations** (promoters, enhancers, regulatory motifs)  
-- Apply **machine learning models** to predict recombination landscapes  
-- Release as an **open-source Jupyter pipeline** for reproducibility and collaboration  
+This workflow establishes a proof-of-concept for fine-scale recombination mapping in human trios. Future directions include scaling the analysis to the whole genome and across multiple trios to generate population-level recombination landscapes. The integration of long-read assemblies and trio-aware phasing algorithms will refine haploblock boundaries, while the adoption of pangenome graph references will allow hotspot detection in structurally complex regions that are inaccessible to linear references. Linking recombination hotspots with regulatory annotations and disease-associated loci will further bridge evolutionary insights with clinical genomics. Longer-term, the pipeline can be extended into a reproducible open-source framework, enabling machine learning approaches to predict recombination patterns from sequence features and epigenomic signals.  
 
 ---
 
 ## 📚 References  
 
 1. Agarwal I, et al. *Fine-scale recombination landscapes.* Nat Commun. 2024. [link](https://www.nature.com/articles/s41467-024-50079-5)  
-2. Nurk S, et al. *The complete human genome assembly.* Nat. 2023. [link](https://pmc.ncbi.nlm.nih.gov/articles/PMC10234299)  
-3. Halldorsson BV, et al. *Population-scale recombination maps.* Nat Genet. 2019. [link](https://pmc.ncbi.nlm.nih.gov/articles/PMC12350169)  
+2. Nurk S, et al. *Telomere-to-telomere assembly of a complete human genome.* Nature. 2025. [link](https://doi.org/10.1038/s41586-025-09140-6)  
+3. Halldorsson BV, et al. *Population-scale recombination maps.* Nat Genet. 2023. [link](https://pubmed.ncbi.nlm.nih.gov/36711673/)  
 4. NIST Genome in a Bottle Consortium. [link](https://www.nist.gov/programs-projects/genome-bottle)  
-5. Human Pangenome Reference Consortium. [link](https://pubmed.ncbi.nlm.nih.gov/40702183/)
-6. A haplotype-resolved view of human gene regulation [link](https://pmc.ncbi.nlm.nih.gov/articles/PMC12157683/)
+5. Human Pangenome Reference Consortium. [link](https://pubmed.ncbi.nlm.nih.gov/40702183/)  
+6. Eizenga JM, et al. *Pangenome graph resources.* Nat Biotechnol. 2023.  
+7. Liao W-W, et al. *Graph genomes in practice.* Nat Methods. 2024.  
 
 ---
 
-### Special thank you to the organizers of the BCM Hackathon 2025!
+🙌 Special thank you to the organizers of the BCM Hackathon 2025!
