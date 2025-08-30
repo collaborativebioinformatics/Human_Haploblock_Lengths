@@ -1,4 +1,4 @@
-# Human_Haploblock_Lengths  
+# Human Haploblock Lengths: A Hackathon Framework for Trio-Based Recombination Analysis  
 *Structural Variants Hackathon at Baylor College of Medicine, August 27–29, 2025*  
 
 ---
