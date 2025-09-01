@@ -10,15 +10,15 @@ Original file is located at
 # Commented out IPython magic to ensure Python compatibility.
 # %%bash
 # set -euo pipefail
-# 
+# Install dependencies (if not already available)
 # # Install bcftools/tabix
 # apt-get -y update
 # apt-get -y install -qq bcftools tabix
 # 
 # # GIAB Ashkenazim trio base path
+# Base URL for GIAB Ashkenazim Trio (NIST v4.2.1, GRCh38)
 # BASE="https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/AshkenazimTrio"
-# 
-# # Download child (HG002), father (HG003), mother (HG004)
+# # Samples: child (HG002), father (HG003), mother (HG004)
 # wget -c $BASE/HG002_NA24385_son/NISTv4.2.1/GRCh38/HG002_GRCh38_1_22_v4.2.1_benchmark.vcf.gz
 # wget -c $BASE/HG002_NA24385_son/NISTv4.2.1/GRCh38/HG002_GRCh38_1_22_v4.2.1_benchmark.vcf.gz.tbi
 # 
@@ -27,8 +27,7 @@ Original file is located at
 # 
 # wget -c $BASE/HG004_NA24143_mother/NISTv4.2.1/GRCh38/HG004_GRCh38_1_22_v4.2.1_benchmark.vcf.gz
 # wget -c $BASE/HG004_NA24143_mother/NISTv4.2.1/GRCh38/HG004_GRCh38_1_22_v4.2.1_benchmark.vcf.gz.tbi
-# 
-# # Extract 70–80 Mb region of chr6
+# # Extract 70–80 Mb region of chr6 (biallelic SNPs, PASS only)
 # REGION="chr6:70000000-80000000"
 # for S in HG002 HG003 HG004; do
 #   bcftools view -r $REGION -v snps -m2 -M2 -f PASS -Oz \
